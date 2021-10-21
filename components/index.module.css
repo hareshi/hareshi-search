@@ -1,30 +1,3 @@
-.dropTarget {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin-bottom: 160px;
-  background: var(--drop-bg-color);
-  text-align: center;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: transparent;
-  transition: all 50ms ease-out;
-  backdrop-filter: blur(0);
-  z-index: 1;
-}
-.dropping {
-  background: var(--drop-main-color);
-  border: 0.5rem dashed var(--theme-main-color);
-  color: var(--theme-main-color);
-  transition: all 50ms ease-out;
-  backdrop-filter: blur(3px);
-  z-index: 100;
-}
-
 .main {
   display: flex;
   justify-content: center;
@@ -52,39 +25,23 @@
   align-items: center;
   align-content: space-around;
   justify-content: space-between;
-  background: linear-gradient(
-        0deg,
-        var(--result-draw-color) 0,
-        var(--result-draw-color) 90%,
-        var(--result-line-color) 90%,
-        var(--result-line-color) 100%
-      )
-      0 50%,
-    linear-gradient(
-        90deg,
-        var(--result-draw-color) 0,
-        var(--result-draw-color) 90%,
-        var(--result-line-color) 90%,
-        var(--result-line-color) 100%
-      )
-      50% 0,
-    var(--result-main-color);
+  background: #3F3035;
   background-size: 20px 20px;
-  box-shadow: 0 0 20px var(--shadow-color);
+  box-shadow: 0 0 20px #3F3035;
   border-radius: 0.5rem;
   overflow: hidden;
 }
 .messageTextLabel {
-  color: var(--text-strong-color);
+  color: white;
   font-size: 0.7rem;
   line-height: 1rem;
   height: 1rem;
   width: 100%;
   padding: 0.2rem 0.5rem 0.2rem 0.5rem;
-  border-top: 1px dashed var(--theme-weak-color);
+  border-top: 1px dashed white;
 }
 .detail {
-  color: var(--text-strong-color);
+  color: white;
   font-size: 0.8rem;
   text-align: center;
   flex-grow: 1;
@@ -99,47 +56,31 @@
   margin-bottom: 2rem;
 }
 .resultList button {
-  color: var(--text-main-color);
-  background-color: var(--blank-color);
+  color: white;
+  background-color: #493A3F;
   outline: 0;
-  border: 1px solid var(--shadow-color);
+  border: 1px solid #5D4C52;
   border-radius: 3px;
   cursor: pointer;
   font-size: 0.7rem;
   padding: 0.5rem;
-  box-shadow: 1px 1px 3px var(--shadow-color);
+  box-shadow: 1px 1px 3px #3F3035;
   transition: all 100ms ease-out;
 }
 .resultList button:hover {
-  box-shadow: 1px 1px 5px var(--theme-main-color);
+  box-shadow: 1px 1px 5px #332228;
   transition: all 100ms ease-out;
 }
 .resultList button:active {
-  box-shadow: 0 0 2px var(--theme-main-color);
+  box-shadow: 0 0 2px #332228;
   transform: translate(1px, 1px);
   transition: all 100ms ease-out;
 }
 
 .playerInfoPane {
   margin-bottom: 2rem;
-  box-shadow: 0 0 20px var(--shadow-color);
-  background: linear-gradient(
-        0deg,
-        var(--info-draw-color) 0,
-        var(--info-draw-color) 95%,
-        var(--info-line-color) 95%,
-        var(--info-line-color) 100%
-      )
-      0 50%,
-    linear-gradient(
-        90deg,
-        var(--info-draw-color) 0,
-        var(--info-draw-color) 95%,
-        var(--info-line-color) 95%,
-        var(--info-line-color) 100%
-      )
-      50% 0,
-    var(--info-main-color);
+  box-shadow: 0 0 20px #3F3035;
+  background: #3F3035;
   background-size: 50px 50px;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -154,7 +95,7 @@
     height: 30vh;
     overflow-y: scroll;
     padding: 0 20px 0 20px;
-    border-bottom: 1px dashed var(--theme-weak-color);
+    border-bottom: 1px dashed white;
     margin-bottom: 1rem;
   }
 }

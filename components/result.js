@@ -26,9 +26,9 @@ export default function Result({ searchResult: entry, active: isActive }) {
         {entry.anilist.title?.native || entry.anilist.title?.romaji || entry.anilist}
       </div>
       <div className={detail}>
-        <div className={ep}>{entry.episode && `Episode ${zeroPad(entry.episode, 2)}`}</div>
+        <div className={ep}>{entry.episode && `ตอนที่ ${zeroPad(entry.episode, 2)}`}</div>
         <div className={time}>{timeCode}</div>
-        <div className={similarity}>{`~${(entry.similarity * 100).toFixed(2)}% Similarity`}</div>
+        <div className={similarity}>{`~${(entry.similarity * 100).toFixed(2)}% ความแม่นยำ`}</div>
       </div>
       <video
         src={`${entry.video}&size=s`}

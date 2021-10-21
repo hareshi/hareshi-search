@@ -19,8 +19,9 @@ import {
   playerInfoPane,
 } from "../components/index.module.css";
 
-const { NEXT_PUBLIC_API_ENDPOINT } = process.env;
-const { NEXT_PUBLIC_ANILIST_ENDPOINT = "https://graphql.anilist.co" } = process.env;
+const NEXT_PUBLIC_API_ENDPOINT = 'https://api.trace.moe';
+const NEXT_PUBLIC_ANILIST_ENDPOINT = 'https://graphql.anilist.co';
+const NEXT_PRIVATE_ROXY_MERGE_API = 'https://roxy.hareshi.net/api/v1/anime/merge/'
 
 const Index = () => {
   const [dropTargetText, setDropTargetText] = useState("");
@@ -90,8 +91,8 @@ const Index = () => {
     }
     const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
     if (!file || !file.type.match("image.*")) {
-      setDropTargetText("Error: File is not an image");
-      return "Error: File is not an image";
+      setDropTargetText("ไฟล์นี้ไม่ใช้รูปภาพ โปรดแนบรูปภาพ");
+      return "ไฟล์นี้ไม่ใช้รูปภาพ โปรดแนบรูปภาพ";
     }
     setDropTargetText("");
     e.target.classList.remove(dropping);
@@ -102,7 +103,7 @@ const Index = () => {
   useEffect(async () => {
     if (!searchImageSrc) return;
     setIsLoading(true);
-    setMessageText("Loading search image...");
+    setMessageText("กำลังโหลดรูปภาพ...");
     const image = new Image();
     image.onload = (e) => {
       const canvas = document.createElement("canvas");
@@ -121,13 +122,13 @@ const Index = () => {
       );
     };
     image.onerror = () => {
-      setMessageText("Failed to load search image");
+      setMessageText("เกิดข้อผิดพลาดในการค้นหา");
     };
     image.src = searchImageSrc;
   }, [searchImageSrc]);
 
   const search = async (imageBlob) => {
-    setMessageText("Searching...");
+    setMessageText("กำลังค้นหา...");
     setSearchResult([]);
     setSelectedResult();
     setAnilistInfo();
@@ -149,24 +150,24 @@ const Index = () => {
     setIsSearching(false);
 
     if (res.status === 429) {
-      setMessageText("You searched too many times, please try again later.");
+      setMessageText("คุณค้นหาบ่อยเกินไป, โปรดลองใหม่ภายหลัง.");
       return;
     }
     if (res.status >= 400) {
-      setMessageText(`${(await res.json()).error} Please try again later.`);
+      setMessageText(`เกิดข้อผิดพลาด: ${(await res.json()).error}`);
       return;
     }
     const { frameCount, result } = await res.json();
 
     setMessageText(
-      `Searched ${frameCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} frames in ${(
+      `ค้นหาจากทั้งหมด ${frameCount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} เฟรม ใช้เวลา ${(
         (performance.now() - startSearchTime) /
         1000
-      ).toFixed(2)}s`
+      ).toFixed(2)} วินาที`
     );
 
     if (result.length === 0) {
-      setMessageText("Cannot find any result");
+      setMessageText("แง้ ไม่เจอผลลัพธ์ใดๆเลย");
       return;
     }
 
@@ -234,7 +235,7 @@ const Index = () => {
       headers: { "Content-Type": "application/json" },
     });
     if (response.status >= 400) {
-      setMessageText("Failed to get Anilist info, please try again later.");
+      setMessageText("เกิดข้อผิดพลาดในการดึงข้อมูลอนิเมะ โปรดลองใหม่ภายหลัง");
       const topResultsWithoutAnlist = topResults.map((entry) => {
         const id = entry.anilist;
         entry.anilist = {
@@ -256,6 +257,11 @@ const Index = () => {
     }
     const anilistData = (await response.json()).data.Page.media;
 
+  //   const response = await fetch(NEXT_PRIVATE_ROXY_MERGE_API + , { 
+  //     method: 'GET', 
+
+  // })
+
     const topResultsWithAnlist = topResults.map((entry) => {
       entry.anilist = anilistData.find((e) => e.id === entry.anilist);
       entry.playResult = () => {
@@ -275,40 +281,40 @@ const Index = () => {
   };
 
   return (
-    <Layout title="Anime Scene Search Engine">
+    <Layout title="ค้นหาอนิเมะ">
       <Head>
         <meta name="viewport" content="width=650, viewport-fit=cover" />
         <meta name="theme-color" content="#f9f9fb" />
-        <meta itemprop="name" content="WAIT: What Anime Is This?" />
+        <meta itemprop="name" content="บริการค้นหาอนิเมะ" />
         <meta
           itemprop="description"
-          content="Anime Scene Search Engine. Lookup the exact moment and the episode."
+          content="hareshi search ค้นหาอนิเมะโดยใช้รูปภาพจากตอนนั้นๆ สามารถบอกได้ว่าตอนที่เท่าไรและนาทีที่เท่าไร แบบแม่นยำ"
         />
         <meta itemprop="image" content="https://trace.moe/favicon128.png" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@soruly" />
-        <meta name="twitter:title" content="WAIT: What Anime Is This?" />
+        <meta name="twitter:title" content="บริการค้นหาอนิเมะ" />
         <meta
           name="twitter:description"
-          content="Anime Scene Search Engine. Lookup the exact moment and the episode."
+          content="hareshi search ค้นหาอนิเมะโดยใช้รูปภาพจากตอนนั้นๆ สามารถบอกได้ว่าตอนที่เท่าไรและนาทีที่เท่าไร แบบแม่นยำ"
         />
         <meta name="twitter:creator" content="@soruly" />
         <meta name="twitter:image" content="<%= ogImage %>" />
         <meta
           name="twitter:image:alt"
-          content="Anime Scene Search Engine. Lookup the exact moment and the episode."
+          content="hareshi search ค้นหาอนิเมะโดยใช้รูปภาพจากตอนนั้นๆ สามารถบอกได้ว่าตอนที่เท่าไรและนาทีที่เท่าไร แบบแม่นยำ"
         />
 
-        <meta property="og:title" content="WAIT: What Anime Is This?" />
+        <meta property="og:title" content="บริการค้นหาอนิเมะ" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://trace.moe" />
+        <meta property="og:url" content="https://search.hareshi.net" />
         <meta property="og:image" content="<%= ogImage %>" />
         <meta
           property="og:description"
-          content="Anime Scene Search Engine. Lookup the exact moment and the episode."
+          content="hareshi search ค้นหาอนิเมะโดยใช้รูปภาพจากตอนนั้นๆ สามารถบอกได้ว่าตอนที่เท่าไรและนาทีที่เท่าไร แบบแม่นยำ"
         />
-        <meta property="og:site_name" content="trace.moe" />
+        <meta property="og:site_name" content="search.hareshi.net" />
 
         <link rel="dns-prefetch" href={NEXT_PUBLIC_API_ENDPOINT} />
       </Head>
@@ -363,13 +369,13 @@ const Index = () => {
           <div className={wrap}>
             <div className={resultList}>
               <div className={searchImageDisplay}>
-                <div className={detail}>Your search image</div>
+                <div className={detail}>รูปภาพที่คุณค้นหา</div>
                 <img
                   className={originalImageDisplay}
                   src={searchImageSrc}
                   crossOrigin="anonymous"
                   onError={() => {
-                    setMessageText("Failed to load search image");
+                    setMessageText("เกิดข้อผิดพลาดในการโหลดรูปภาพ");
                   }}
                 />
                 <div className={messageTextLabel}>{messageText}</div>
@@ -416,4 +422,11 @@ const Index = () => {
     </Layout>
   );
 };
+<style jsx global>{`
+html,
+body,* {
+   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@300&display=swap');
+   font-family: 'Noto Serif Thai', serif;
+}
+`}</style>
 export default Index;

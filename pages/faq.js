@@ -11,51 +11,36 @@ import {
 const FAQ = () => (
   <Layout title="FAQ">
     <div className={`${container} ${page}`}>
-      <div className={pageHeader}>FAQ</div>
+      <div className={pageHeader}>คำถามที่พบบ่อย</div>
       <div className={section}>
-        <div className={sectionHeader}>Why I can't find the search result?</div>
+        <div className={sectionHeader}>ทำไมถึงไม่เจอผลการค้นหาอะไรเลย?</div>
         <p>
-          Possible reasons:
+          เหตุผลที่เป็นไปได้:
           <br />
-          1. Your image is not an original anime screenshot.
+          1.รูปภาพของคุณนั้นไม่ได้มาจากอนิเมะ
           <br />
-          2. The anime has not been added to database yet.
+          2.ฝั่งเราเองยังไม่มีข้อมูลเกี่ยวกับเรื่องนี้
           <br />
-          3. Your image is of modified. <br />
-          Regarding 1. You may try to use <a href="https://saucenao.com/">SauceNAO</a> and{" "}
-          <a href="https://iqdb.org/">iqdb.org</a> which is best for searching anime artwork.
+          3.รูปภาพนั้นถูกดัดแปลงมาแล้ว 
           <br />
-          Regarding 2. New animes currently airing would be analyzed around 24 hours after TV
-          broadcast. Long-running animes / cartoons are excluded at this stage. See "What anime are
-          indexed" at the bottom of this page.
+          4.ระบบการค้นหานั้นจะหาจากสีที่คล้ายมากที่สุดเพราะฉนั้นการที่สีรูปภาพเพี้ยนหรือถูกแก้ไขสีอาจจะทำให้การค้นหาเปลี่ยนแปลงได้
           <br />
-          As for 3. The image search algorithm is designed for almost-exact match, not similar
-          match. It analyze the color layout of the image. So, when your image is not a full
-          un-cropped original 16:9 screenshot (i.e. cropped image), the search would likely fail.{" "}
+          5.รูปภาพที่คุณค้นหาถูกตัต (เป็นภาพไม่เต็ม)
           <br />
-          Color is an important factor for the correct search, if heavy tints and filters are
-          applied to the screenshot (i.e. grayscale, contrast, saturation, brightness, sepia), too
-          much information are lost. In this case the search would also fail. The Edge Histogram can
-          solve this issue by ignoring colors and only search edges. But I am running out of
-          computing resource to support another image descriptor.
+          6.รูปภาพที่คุณค้นหาถูกกลับด้านหมุนภาพ ทำให้ไม่สามารถค้นหาได้
           <br />
-          Image transform is also an important factor. If the image is flipped, mirrored or rotated,
-          the search would also fail.
+          7.มีตัวอักศรอยู่บนรูปภาพมากเกินไป หรือ มี UI อะไรสักอย่างมาบัง
           <br />
-          Text occupied too much of the image. Large texts on the image would interfere the original
-          image. The system is not smart enough to ignore the text.
+          8.รูปภาพที่คุณค้นหานั้นเล็กเกินไป หรือาจจะมืดเกินไป หรือมีสีแปลกเกินไป
           <br />
-          If your image has too little distinguish features (e.g. dark images or images with large
-          plain blocks of plain colors), the search would also fail.
-          <br />
-          Searching with a real photo (of an anime) definitely won't work.
+          9.คุณไม่สามารถเอารูปจริงๆมาค้นหาได้ เพราะนี้เป็นเว็บไซต์ค้นหาอนิเมะ
           <br />
         </p>
       </div>
       <div className={section}>
-        <div className={sectionHeader}>Examples of bad screenshots</div>
+        <div className={sectionHeader}>ตัวอย่างการอัพโหลดรูปมาแบบไม่ถูกต้อง</div>
         <br />
-        <h4>Extra border added</h4>
+        <h4>มีขอบเพิ่มเข้ามา</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -63,7 +48,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Bad Screenshot
+          ไม่ถูกต้อง
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -77,14 +62,13 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ถูกต้อง เพราะเป็นรูปภาพเต็มๆ
         </div>
         <p style={{ clear: "both" }}>
-          In case your screenshot has extra borders, please trim off the extra borders before you
-          search.
+          ในเคสนี้มันมีขอบด้านล่างและด้านบนอยู่ทำให้ไม่สามารถค้นหาได้ โปรดตัตขอบออกก่อนค้นหา
         </p>
         <br />
-        <h4>Cropped Image</h4>
+        <h4>รูปภาพไม่เต็ม</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -92,7 +76,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Bad Screenshot
+          ไม่ถูกต้อง
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -106,13 +90,13 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ถูกต้อง เพราะเป็นรูปภาพเต็มๆ
         </div>
         <p style={{ clear: "both" }}>
-          Cropping the image would result a huge loss of information content.
+          การตัตรูปภาพบางส่วนออกนั้นทำให้การค้นหานั้นเพี้ยนทำให้ผลลัพธ์ไม่ถูกต้อง
         </p>
         <br />
-        <h4>Flipped image</h4>
+        <h4>รูปภาพที่ถูกกลับด้าน</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -120,7 +104,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Bad Screenshot
+          ไม่ถูกต้อง
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -134,18 +118,17 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ถูกต้อง เพราะเป็นรูปภาพต้นฉบับ
         </div>
         <p style={{ clear: "both" }}>
-          This screenshot from{" "}
+          รูปภาพนี้ถูกแคปมาจาก{" "}
           <a href="https://www.youtube.com/watch?v=TUoWYoTWcnA&feature=youtu.be&t=2m59s">
             AMV - Animegraphy 2015
           </a>{" "}
-          flipped the original scene in the anime. Try to search with a flipped image if you guess
-          the image has been flipped.
+          และมันถูกกลับด้านทำให้ไม่สามารถค้นหาได้
         </p>
         <br />
-        <h4>Tinted images</h4>
+        <h4>สีเพี้ยน</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -153,7 +136,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Not a good Screenshot
+          สีเพียน
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -167,15 +150,13 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ต้นฉบับ
         </div>
         <p style={{ clear: "both" }}>
-          Tinted images are hard to search. Because the applied filter effects heavily distorted the
-          information in the original screenshot. The color layout image descriptor can no longer
-          find such images.
+          รูปภาพแบบนั้นสีเพี้ยนทำให้ค้นหายากมาก แนะนำให้เอารูปต้นฉบับมาก่อนละค่อยค้นหา
         </p>
         <br />
-        <h4>Old Japanese Anime</h4>
+        <h4>อนิเมะเก่ามากๆ</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -183,11 +164,11 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Sample Screenshot
+          รูปภาพตัวอย่าง
         </div>
-        <p style={{ clear: "both" }}>Anime of this age are not indexed.</p>
+        <p style={{ clear: "both" }}>อนิเมะเก่าแบบนี้ไม่มีในฐานข้อมูลจ้า</p>
         <br />
-        <h4>Not from Anime Screenshot</h4>
+        <h4>ไม่ได้มาจากในอนิเมะ</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -195,14 +176,13 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Sample Screenshot
+          รูปภาพตัวอย่าง
         </div>
         <p style={{ clear: "both" }}>
-          You should try <a href="https://saucenao.com/">SauceNAO</a> and{" "}
-          <a href="https://iqdb.org/">https://iqdb.org/</a> to search anime / doujin artwork.
+         รูปภาพนี้เป็นภาพวาดไม่ได้มาจากอนิเมะไม่สามารถหาได้
         </p>
         <br />
-        <h4>Not Japanese Anime</h4>
+        <h4>ไม่ใช้อนิเมะญี่ปุ่น</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -210,11 +190,11 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Sample Screenshot
+          รูปภาพตัวอย่าง
         </div>
-        <p style={{ clear: "both" }}>Tom and Jerry is obviously not a Japanese Anime.</p>
+        <p style={{ clear: "both" }}>ทอมแอนด์เจอร์รี่ไม่ได้เป็นอนิเมะญี่ปุ่น</p>
         <br />
-        <h4>Dark image</h4>
+        <h4>รูปภาพที่มืดมากๆ</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -222,13 +202,13 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Sample Screenshot
+          รูปภาพตัวอย่าง
         </div>
         <p style={{ clear: "both" }}>
-          Dark images are hard to distinguish using the colorlayout descriptor.
+          มืดขนาดนี้ผมเองก็มองไม่เห็น
         </p>
         <br />
-        <h4>Low resolution image</h4>
+        <h4>รูปที่เล็กมากๆ</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -236,16 +216,16 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Sample Screenshot
+          รูปภาพตัวอย่าง
         </div>
         <p style={{ clear: "both" }}>
-          Your image should be at least 320x180px to search effectively.
+          รูปในตัวอย่างนี้เล็กมากๆแนะนำขนาด 320x180px ขึ้นไป
         </p>
         <br />
       </div>
       <div className={section}>
-        <div className={sectionHeader}>Examples of acceptable screenshots</div>
-        <h4>Slightly distorted size</h4>
+        <div className={sectionHeader}>ตัวอย่างรูปภาพที่พออนุโลมได้</div>
+        <h4>ขนาดแตกต่างกันเล็กน้อย</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -253,7 +233,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Acceptable Screenshot
+          รับได้
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -267,11 +247,11 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ต้นฉบับ
         </div>
         <p style={{ clear: "both" }}></p>
         <br />
-        <h4>Reasonably sized subtitles</h4>
+        <h4>มีซับเล็กน้อย</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -279,7 +259,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Acceptable Screenshot
+          รับได้
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -293,11 +273,11 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ต้นฉบับ
         </div>
         <p style={{ clear: "both" }}></p>
         <br />
-        <h4>A frame of GIF</h4>
+        <h4>รูปภาพจากไฟล์ GIF</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -305,7 +285,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Acceptable Screenshot
+          รับได้
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -319,11 +299,11 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ต้นฉบับ
         </div>
-        <p style={{ clear: "both" }}>If the color distortion is acceptable, GIF is also OK.</p>
+        <p style={{ clear: "both" }}>ถ้าสีไม่ได้เพี้ยนมากก็พอรับได้</p>
         <br />
-        <h4>Drawings of the anime scene</h4>
+        <h4>รูปวาดที่มีในอนิเมะ</h4>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
             alt=""
@@ -331,7 +311,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Acceptable Screenshot
+          รับได้
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -345,7 +325,7 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ต้นฉบับ
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -354,7 +334,7 @@ const FAQ = () => (
             style={{ maxWidth: "288px", maxHeight: "162px", verticalAlign: "middle" }}
           />
           <br />
-          Acceptable Screenshot
+          รับได้
         </div>
         <div style={{ float: "left", textAlign: "center", width: "288px" }}>
           <img
@@ -368,15 +348,14 @@ const FAQ = () => (
             }}
           />
           <br />
-          Original Screenshot
+          ต้นฉบับ
         </div>
         <p style={{ clear: "both" }}>
-          The search image does not has to be taken from anime screencap directly. You can use
-          drawings of some scenes as long as it is similar to the original one.
+          รูปภาพนั้นไม่จำเป็นต้องแคปมากจากอนิเมะเสมอไป แต่สามารถวาดให้คล้ายๆกันหรือเหมือนกันสามารถใช้งานค้นหาได้
         </p>
         <br />
       </div>
-      <div className={section}>
+      {/* <div className={section}>
         <div className={sectionHeader}>How do I search for a more accurate result?</div>
         <p>
           Crop your screenshot to 16:9 or 4:3 before searching. Remove any extra borders in
@@ -441,7 +420,7 @@ const FAQ = () => (
           , go to settings and add this:
         </p>
         <pre>https://trace.moe/?url=</pre>
-      </div>
+      </div> */}
     </div>
   </Layout>
 );

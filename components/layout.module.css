@@ -1,3 +1,4 @@
+
 .container {
   width: auto;
   max-width: 680px;
@@ -8,8 +9,8 @@
   padding: 1rem;
   font-size: 0.9rem;
   line-height: 1.2rem;
-  text-shadow: 1px 1px 3px var(--shadow-color);
-  color: var(--text-strong-color);
+  text-shadow: 1px 1px 3px #4C3E43;
+  color: white;
 }
 .pageHeader {
   font-size: 1.5rem;
@@ -22,7 +23,7 @@
 .sectionHeader {
   font-size: 1.1rem;
   line-height: 1.5rem;
-  border-bottom: 2px dashed var(--theme-weak-color);
+  border-bottom: 2px dashed #FF7EA3;
   text-align: left;
 }
 .sectionItem {

@@ -1,7 +1,7 @@
 {
-  "name": "trace.moe-www",
+  "name": "hareshi-anisearch",
   "version": "2.0.0",
-  "description": "Webpage for trace.moe",
+  "description": "anime search tool by using trace.moe",
   "main": "image-proxy.js",
   "scripts": {
     "dev": "next dev",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/soruly/trace.moe-www.git"
+    "url": "git+https://github.com/hareshi/hareshi-search.git"
   },
   "author": "soruly",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/soruly/trace.moe-www/issues"
+    "url": "https://github.com/hareshi/hareshi-search/issues"
   },
-  "homepage": "https://github.com/soruly/trace.moe-www#readme",
+  "homepage": "https://search.hareshi.net",
   "devDependencies": {
     "prettier": "^2.4.1"
   },

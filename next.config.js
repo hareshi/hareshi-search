@@ -1,6 +1,6 @@
-const { NEXT_PUBLIC_API_ENDPOINT } = process.env;
-const { NEXT_PUBLIC_MEDIA_ENDPOINT } = process.env;
-const { NEXT_PUBLIC_ANILIST_ENDPOINT = "https://graphql.anilist.co" } = process.env;
+const NEXT_PUBLIC_API_ENDPOINT = 'https://api.trace.moe';
+const NEXT_PUBLIC_MEDIA_ENDPOINT = 'https://media.trace.moe/';
+const NEXT_PUBLIC_ANILIST_ENDPOINT = "https://graphql.anilist.co";
 
 module.exports = {
   async headers() {
@@ -19,11 +19,9 @@ module.exports = {
           {
             key: "Content-Security-Policy",
             value: [
-              "default-src 'self'",
               "script-src 'self' 'unsafe-eval' www.google-analytics.com static.cloudflareinsights.com",
               "style-src * 'self' 'unsafe-inline'",
               `img-src * 'self' data: blob: ${NEXT_PUBLIC_MEDIA_ENDPOINT}`,
-              "font-src 'self'",
               "frame-src www.youtube-nocookie.com www.youtube.com www.google.com",
               `media-src blob: 'self' ${NEXT_PUBLIC_MEDIA_ENDPOINT}`,
               "form-action 'self'",

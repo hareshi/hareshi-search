@@ -35,14 +35,17 @@ export default function SearchBar({
       <div className={searchBarContent}>
         {!searchImageSrc && (
           <div className={greet}>
-            paste or drop image here; trace back the scene from an anime screenshot
+            วางลิงค์รูปภาพหรืออัพโหลดรูปภาพที่เป็นซีน/ตอนเพื่อทำการค้นหา
+            <br/>
+            <br/>
+            <a href="/faq" style={{color: 'pink', paddingBottom: '10px'}}>[คำถามที่พบบ่อย]</a>
           </div>
         )}
         {searchImageSrc && (
           <a href="/">
             <div className={logo}>
-              <div className={title}>trace.moe</div>
-              <div className={subtitle}>-- Anime Scene Search Engine</div>
+              <div className={title}>HARESHI</div>
+              <div className={subtitle}>-- ค้นหาอนิเมะ</div>
             </div>
           </a>
         )}
@@ -54,7 +57,7 @@ export default function SearchBar({
               required
               name="imageURL"
               className={imageUrlInput}
-              placeholder="Image URL"
+              placeholder="ลิงค์รูปภาพ"
               value={imageURL}
               onInput={imageURLInput}
             />
@@ -68,14 +71,14 @@ export default function SearchBar({
               <input
                 type="text"
                 className={anilistFilterInput}
-                placeholder="anilist ID"
+                placeholder="รหัสอนิเมะ"
                 value={anilistFilter}
                 onChange={(e) => {
                   setAnilistFilter(e.target.value);
                 }}
               />
               <button className={cutBordersBtn} onClick={() => setIsCutBorders(!isCutBorders)}>
-                <span className={`icon ${isCutBorders ? iconCheck : iconCross}`}></span> Cut Borders
+                <span className={`icon ${isCutBorders ? iconCheck : iconCross}`}></span> ตัตขอบ
               </button>
               <button
                 className={searchBtn}

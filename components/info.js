@@ -1,4 +1,4 @@
-import { infoPane, title, subtitle, divider, poster, detail, footNotes } from "./info.module.css";
+import { infoPane, title, subtitle, divider, poster, detail, footNotes, hareshiBanner, hareshiBannerBlock } from "./info.module.css";
 
 export default function Layout({ anilist: src }) {
   if (!src) {
@@ -7,13 +7,13 @@ export default function Layout({ anilist: src }) {
   let naturalText1 = "";
 
   if (src.duration && src.episodes === 1) {
-    naturalText1 += `${src.duration} minutes `;
+    naturalText1 += `${src.duration} นาที `;
   }
   if (src.episodes && src.format !== "MOVIE") {
-    naturalText1 += `${src.episodes} episode `;
+    naturalText1 += `${src.episodes} ตอน `;
   }
   if (src.duration && src.episodes > 1) {
-    naturalText1 += `${src.duration}-minute `;
+    naturalText1 += `${src.duration}-นาที `;
   }
   if (src.format) {
     naturalText1 += `${src.format.length > 3 ? src.format.toLowerCase() : src.format} `;
@@ -33,18 +33,18 @@ export default function Layout({ anilist: src }) {
   if (strStartDate && strEndDate) {
     if (src.format === "MOVIE") {
       if (strStartDate === strEndDate) {
-        naturalText2 += `Released on ${strStartDate}`;
+        naturalText2 += `ออกอากาศเมื่อ ${strStartDate}`;
       } else {
-        naturalText2 += `Released during ${strStartDate} to ${strEndDate}`;
+        naturalText2 += `ออกอากาศตั้งแต่ ${strStartDate} จนถึง ${strEndDate}`;
       }
     } else if (strStartDate === strEndDate) {
-      naturalText2 += `Released on ${strStartDate}`;
+      naturalText2 += `ออกอากาศเมื่อ ${strStartDate}`;
     } else {
-      naturalText2 += `Airing from ${strStartDate} to ${strEndDate}`;
+      naturalText2 += `ออกอากาศตั้งแต่ ${strStartDate} จนถึง ${strEndDate}`;
     }
   } else if (strStartDate) {
     if (src.format === "TV" || src.format === "TV_SHORT") {
-      naturalText2 += `Airing since ${strStartDate}`;
+      naturalText2 += `ออกอากาศไปเมื่อวันที่ ${strStartDate}`;
     }
   }
 
@@ -92,13 +92,24 @@ export default function Layout({ anilist: src }) {
       );
     });
   }
-
+  console.log(src)
   return (
     <div className={infoPane}>
+      <div>
+        <div style={{ 'background-image': `url('${src.bannerImage || src.coverImage.large}')` }} className={hareshiBanner}>
+        </div>
+        <br></br>
+        <a href={`//hareshi.net/browse/anime/${src.id}`} target="_blank">
+        <div className={hareshiBannerBlock}>
+          <p>ข้อมูลเพิ่มเติม,รับชม,ข้อมูลลิขสิทธ์</p>
+          <p style={{ 'textAlign': 'right' }}>ดูเพิ่มเติมได้ที่ hareshi.net</p>
+        </div>
+          </a>
+
+      </div>
       <div className={title}>{src.title.native}</div>
       <div className={subtitle}>{src.title.romaji}</div>
       <div className={divider}></div>
-
       <div className={detail}>
         <table>
           <tbody>
@@ -111,25 +122,29 @@ export default function Layout({ anilist: src }) {
               </td>
             </tr>
             <tr>
-              <td>Alias</td>
+              <td>ชื่ออื่นๆ</td>
               <td>{synonyms}</td>
             </tr>
             <tr>
-              <td>Genre</td>
+              <td>หมวดหมู่</td>
               <td>{src.genres.join(", ")}</td>
             </tr>
             <tr>
-              <td>Studio</td>
+              <td>สตูดิโอ</td>
               <td>{studio}</td>
             </tr>
             <tr>
-              <td>External Links</td>
+              <td>ลิงค์เพิ่มเติม</td>
               <td>{externalLinks}</td>
             </tr>
+            {/* <tr>
+              <td>ค่ายลิขสิทธ์ที่มี</td>
+              <td>{externalLinks}</td>
+            </tr> */}
           </tbody>
         </table>
         <div className={poster}>
-          <a href={`//anilist.co/anime/${src.id}`}>
+          <a href={`//hareshi.net/browse/anime/${src.id}`} target="_blank">
             <img
               key={src.coverImage.large}
               src={src.coverImage.large}
@@ -143,7 +158,7 @@ export default function Layout({ anilist: src }) {
       </div>
       <div className={divider}></div>
       <div className={footNotes}>
-        Information provided by <a href="https://anilist.co">anilist.co</a>
+        ข้อมูลการค้นหานำมาจาก <a href="https://trace.moe">trace.moe</a>
       </div>
     </div>
   );

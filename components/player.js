@@ -113,7 +113,7 @@ export default function Player({ src, fileName, onDrop, timeCode, isLoading, isS
         }}
         onDragEnter={(e) => {
           e.target.classList.add(dropping);
-          setDropTargetText("Drop image here");
+          setDropTargetText("ลากรูปภาพลงที่นี้");
         }}
         onDragLeave={(e) => {
           e.target.classList.remove(dropping);
