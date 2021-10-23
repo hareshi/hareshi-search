@@ -12,6 +12,6 @@ window.addEventListener("load", function () {
     a.src = g;
     m.parentNode.insertBefore(a, m);
   })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
-  ga("create", "UA-70950149-1", "auto");
+  ga("create", "G-DTKJ3KV04G", "auto");
   ga("send", "pageview");
 });
