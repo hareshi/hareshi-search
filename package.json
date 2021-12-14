@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port=2211",
     "export": "next export",
     "build-export-start": "next build && next export && next start",
     "prettier": "prettier",

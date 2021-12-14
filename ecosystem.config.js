@@ -6,7 +6,7 @@ module.exports = {
             watch: true,
             name: 'hareshi-search',
             cwd: ' /home/hareshi/hareshi-search',
-            script: 'yarn',
+            script: 'npm',
             args: 'start',
             max_memory_restart: '1G'
         },
