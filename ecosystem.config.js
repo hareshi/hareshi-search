@@ -5,8 +5,7 @@ module.exports = {
             exec_mode: 'cluster',
             watch: true,
             name: 'hareshi-search',
-            cwd: ' /home/hareshi/hareshi-search',
-            script: './node_modules/next/dist/bin/next-start',
+            script: './node_modules/next/dist/bin/next',
             args: "start --port=2211",
             autorestart: true,
             max_memory_restart: '1G'
