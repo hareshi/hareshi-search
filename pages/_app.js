@@ -1,6 +1,14 @@
 import "../styles/normalize.css";
 import "../styles/global.css";
-
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+import App from "next/app";
+import { init } from "@socialgouv/matomo-next";
+class MyApp extends App {
+  componentDidMount() {
+    init({ url: 'https://sora.yue.sh/replace', siteId: 4 });
+  }
+  render() {
+    const { Component, pageProps } = this.props;
+    return <Component {...pageProps} />;
+  }
 }
+export default MyApp;
