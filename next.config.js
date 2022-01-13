@@ -19,7 +19,7 @@ module.exports = {
           {
             key: "Content-Security-Policy",
             value: [
-              "script-src 'self' 'unsafe-eval' www.google-analytics.com static.cloudflareinsights.com sora.yue.sh",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' www.google-analytics.com static.cloudflareinsights.com sora.yue.sh",
               "style-src * 'self' 'unsafe-inline'",
               `img-src * 'self' data: blob: ${NEXT_PUBLIC_MEDIA_ENDPOINT}`,
               "frame-src www.youtube-nocookie.com www.youtube.com www.google.com",
