@@ -4,7 +4,7 @@ import App from "next/app";
 import { init } from "@socialgouv/matomo-next";
 class MyApp extends App {
   componentDidMount() {
-    init({ url: 'https://sora.yue.sh', siteId: 4 });
+    init({ url: 'https://sora.0127006.xyz', siteId: 4 });
   }
   render() {
     const { Component, pageProps } = this.props;
