@@ -19,7 +19,7 @@ module.exports = {
           {
             key: "Content-Security-Policy",
             value: [
-              "script-src 'self' 'unsafe-eval' 'unsafe-inline' www.google-analytics.com static.cloudflareinsights.com sora.yue.sh",
+              // "script-src 'self' 'unsafe-eval' 'unsafe-inline' www.google-analytics.com static.cloudflareinsights.com sora.yue.sh sora.0127007.xyz sora.0127007.xyz/sora.js sora.0127006.xyz",
               "style-src * 'self' 'unsafe-inline'",
               `img-src * 'self' data: blob: ${NEXT_PUBLIC_MEDIA_ENDPOINT}`,
               "frame-src www.youtube-nocookie.com www.youtube.com www.google.com",
@@ -29,7 +29,7 @@ module.exports = {
               "frame-ancestors 'none'",
               "manifest-src 'self'",
               "block-all-mixed-content",
-              `connect-src blob: 'self' ${NEXT_PUBLIC_API_ENDPOINT} ${NEXT_PUBLIC_MEDIA_ENDPOINT} ${NEXT_PUBLIC_ANILIST_ENDPOINT} www.google-analytics.com stats.g.doubleclick.net sora.yue.sh`,
+              // `connect-src blob: 'self' ${NEXT_PUBLIC_API_ENDPOINT} ${NEXT_PUBLIC_MEDIA_ENDPOINT} ${NEXT_PUBLIC_ANILIST_ENDPOINT} www.google-analytics.com stats.g.doubleclick.net sora.yue.sh`,
             ].join("; "),
           },
         ],
